@@ -1,5 +1,5 @@
 # Build files
-dist/
+lib/
 
 # Logs
 logs
