@@ -1,5 +1,11 @@
 # hono-discord-verify
 
+---
+
+[![version](https://img.shields.io/npm/v/hono-discord-verify.svg)](https://www.npmjs.com/package/hono-discord-verify)
+[![ci](https://github.com/WhistlingZephyr/hono-discord-verify/actions/workflows/ci.yaml/badge.svg)](https://github.com/WhistlingZephyr/hono-discord-verify/actions/workflows/ci.yaml)
+![Downloads](https://img.shields.io/npm/dt/hono-discord-verify)
+
 A Discord HTTP bot verification middleware for [Hono](https://hono.dev/). Built on top of [discord-interactions](https://www.npmjs.com/package/discord-interactions).
 
 ## Installation
