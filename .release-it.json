@@ -3,6 +3,9 @@
   "github": {
     "autoGenerate": true
   },
+  "npm": {
+    "skipChecks": true
+  },
   "hooks": {
     "before:init": "pnpm run check"
   },
