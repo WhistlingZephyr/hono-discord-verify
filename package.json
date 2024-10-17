@@ -23,7 +23,7 @@
     "lint-staged": "lint-staged",
     "check": "pnpm run \"/^(build|lint|format:check)$/\"",
     "prepare": "husky",
-    "release": "release-it"
+    "release": "env-cmd release-it"
   },
   "lint-staged": {
     "!(*.{js,mjs,cjs,ts})": "prettier --ignore-unknown --write",
@@ -41,6 +41,7 @@
   "license": "MIT",
   "dependencies": {
     "discord-interactions": "^4.1.0",
+    "env-cmd": "^10.1.0",
     "hono": "^4.6.3"
   },
   "devDependencies": {
