@@ -21,7 +21,7 @@
     "lint": "eslint",
     "lint:fix": "eslint --fix",
     "lint-staged": "lint-staged",
-    "check": "pnpm run /build|lint|format:check/",
+    "check": "pnpm run \"/build|lint|format:check/\"",
     "prepare": "husky",
     "release": "release-it"
   },
