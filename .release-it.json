@@ -7,7 +7,8 @@
     "skipChecks": true
   },
   "hooks": {
-    "before:init": "pnpm run check"
+    "before:init": ["pnpm run lint", "pnpm run format:check"],
+    "after:bump": "pnpm run build"
   },
   "plugins": {
     "@release-it/conventional-changelog": {
