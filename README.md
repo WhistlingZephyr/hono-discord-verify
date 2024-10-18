@@ -26,20 +26,19 @@ import {
 } from "discord-api-types/v10";
 
 const app = new Hono();
+const textRes = (text: string): APIInteractionResponse => ({
+    type: InteractionResponseType.ChannelMessageWithSource,
+    data: { content: text },
+});
 
 app.post("/interactions", discordVerify(publicKey), (c) => {
-    const interaction = c.get("interaction");
-    if (interaction.type === InteractionType.ApplicationCommand) {
-        if (interaction.data?.name === "ping") {
-            return c.json<APIInteractionResponse>({
-                type: InteractionResponseType.ChannelMessageWithSource,
-                data: {
-                    content: "Pong!",
-                },
-            });
+    const body = c.get("interaction");
+    if (body.type === InteractionType.ApplicationCommand) {
+        if (body.data?.name === "ping") {
+            return c.json(textRes("Pong!"));
         }
     }
-    return c.text("Invalid interaction", 401);
+    return c.text("invalid interaction", 401);
 });
 ```
 
