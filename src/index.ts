@@ -1,19 +1,21 @@
-import { validator } from "hono/validator";
+import { createMiddleware } from "hono/factory";
 import { verifyKey } from "discord-interactions";
-import type { APIInteraction } from "discord-api-types/v10";
+import {
+    InteractionResponseType,
+    InteractionType,
+    type APIInteraction,
+    type APIInteractionResponse,
+} from "discord-api-types/v10";
+import camelize, { type Camelize } from "camelize-ts";
 
-const keyValidator = (publicKey: string) =>
-    validator("header", async (value, c) => {
-        // headers are converted to lowercase when fetching all of them as an object, https://hono.dev/docs/api/request#header
-        const signature = value["x-signature-ed25519"];
-        const timestamp = value["x-signature-timestamp"];
-        if (
-            !signature ||
-            !timestamp ||
-            typeof signature !== "string" ||
-            typeof timestamp !== "string"
-        ) {
-            return c.json({ error: "Invalid request headers." }, 401);
+const discordVerify = (publicKey: string) =>
+    createMiddleware<{
+        Variables: { interaction: Camelize<APIInteraction> };
+    }>(async (c, next) => {
+        const signature = c.req.header("X-Signature-Ed25519");
+        const timestamp = c.req.header("X-Signature-Timestamp");
+        if (!signature || !timestamp) {
+            return c.text("Invalid request headers.", 401);
         }
 
         const rawBody = await c.req.text();
@@ -24,11 +26,18 @@ const keyValidator = (publicKey: string) =>
             publicKey,
         );
         if (!isValid) {
-            return c.json({ error: "Failed to verify request." }, 401);
+            return c.text("Failed to verify request.", 401);
         }
 
         const body = JSON.parse(rawBody) as APIInteraction;
-        return { body };
+        if (body.type === InteractionType.Ping) {
+            return c.json<APIInteractionResponse>({
+                type: InteractionResponseType.Pong,
+            });
+        }
+
+        c.set("interaction", camelize(body));
+        await next();
     });
 
-export default keyValidator;
+export default discordVerify;

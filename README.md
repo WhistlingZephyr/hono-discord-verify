@@ -17,32 +17,29 @@ npm i hono-discord-verify
 ## Usage
 
 ```ts
-import keyValidator from "hono-discord-verify";
+import { Hono } from "hono";
+import discordVerify from "hono-discord-verify";
+import {
+    InteractionResponseType,
+    InteractionType,
+    type APIInteractionResponse,
+} from "discord-api-types/v10";
 
-// ...
+const app = new Hono();
 
-app.post("/interactions", keyValidator(publicKey, true), (c) => {
-    const body = c.req.valid("header").body;
-    if (body.type === InteractionType.Ping) {
-        return c.json({
-            type: InteractionResponseType.Pong,
-        } satisfies APIInteractionResponse);
-    } else if (body.type === InteractionType.ApplicationCommand) {
-        if (body.data?.name === "ping") {
-            return c.json({
+app.post("/interactions", discordVerify(publicKey), (c) => {
+    const interaction = c.get("interaction");
+    if (interaction.type === InteractionType.ApplicationCommand) {
+        if (interaction.data?.name === "ping") {
+            return c.json<APIInteractionResponse>({
                 type: InteractionResponseType.ChannelMessageWithSource,
                 data: {
                     content: "Pong!",
                 },
-            } satisfies APIInteractionResponse);
+            });
         }
     }
-    return c.json({
-        type: InteractionResponseType.ChannelMessageWithSource,
-        data: {
-            content: "Invalid command.",
-        },
-    } satisfies APIInteractionResponse);
+    return c.text("Invalid interaction", 401);
 });
 ```
 

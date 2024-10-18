@@ -48,6 +48,7 @@
   },
   "homepage": "https://github.com/WhistlingZephyr/hono-discord-verify#readme",
   "dependencies": {
+    "camelize-ts": "^3.0.0",
     "discord-interactions": "^4.1.0",
     "env-cmd": "^10.1.0",
     "hono": "^4.6.5"
