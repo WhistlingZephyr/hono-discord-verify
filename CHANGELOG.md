@@ -1,3 +1,9 @@
+## [0.2.1](https://github.com/WhistlingZephyr/hono-discord-verify/compare/v0.2.0...v0.2.1) (2024-10-18)
+
+### Bug Fixes
+
+-   **pkg:** add GitHub release option to release-it ([db004b0](https://github.com/WhistlingZephyr/hono-discord-verify/commit/db004b0b25a0ecbf7892a33f390801030676d4ac))
+
 ## 0.2.0 (2024-10-18)
 
 ### Features
