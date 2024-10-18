@@ -1,3 +1,9 @@
+## [0.4.0](https://github.com/WhistlingZephyr/hono-discord-verify/compare/v0.3.0...v0.4.0) (2024-10-18)
+
+### Features
+
+-   remove camelization ([b959adf](https://github.com/WhistlingZephyr/hono-discord-verify/commit/b959adf72515ad07d3eb5d86100381f6449ecdc0))
+
 ## [0.3.0](https://github.com/WhistlingZephyr/hono-discord-verify/compare/v0.2.1...v0.3.0) (2024-10-18)
 
 ### Features
