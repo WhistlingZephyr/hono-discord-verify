@@ -1,3 +1,9 @@
+## [0.3.0](https://github.com/WhistlingZephyr/hono-discord-verify/compare/v0.2.1...v0.3.0) (2024-10-18)
+
+### Features
+
+-   refactor API & camelize body by default ([2968454](https://github.com/WhistlingZephyr/hono-discord-verify/commit/29684543d9e356200d4379f5ce85d1b267ed89ab))
+
 ## [0.2.1](https://github.com/WhistlingZephyr/hono-discord-verify/compare/v0.2.0...v0.2.1) (2024-10-18)
 
 ### Bug Fixes
