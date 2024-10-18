@@ -39,6 +39,14 @@
   ],
   "author": "WhistlingZephyr",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WhistlingZephyr/hono-discord-verify.git"
+  },
+  "bugs": {
+    "url": "https://github.com/WhistlingZephyr/hono-discord-verify/issues"
+  },
+  "homepage": "https://github.com/WhistlingZephyr/hono-discord-verify#readme",
   "dependencies": {
     "discord-interactions": "^4.1.0",
     "env-cmd": "^10.1.0",
