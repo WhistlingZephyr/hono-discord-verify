@@ -2,7 +2,7 @@ import { validator } from "hono/validator";
 import { verifyKey } from "discord-interactions";
 import type { APIInteraction } from "discord-api-types/v10";
 
-export const keyValidator = (publicKey: string) =>
+const keyValidator = (publicKey: string) =>
     validator("header", async (value, c) => {
         // headers are converted to lowercase when fetching all of them as an object, https://hono.dev/docs/api/request#header
         const signature = value["x-signature-ed25519"];
@@ -30,3 +30,5 @@ export const keyValidator = (publicKey: string) =>
         const body = JSON.parse(rawBody) as APIInteraction;
         return { body };
     });
+
+export default keyValidator;
