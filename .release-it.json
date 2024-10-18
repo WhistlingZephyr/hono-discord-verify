@@ -3,6 +3,10 @@
   "github": {
     "autoGenerate": true
   },
+  "git": {
+    "tagName": "v${version}",
+    "commitMessage": "chore(release): release v${version}"
+  },
   "hooks": {
     "before:init": ["pnpm run lint", "pnpm run format:check"],
     "after:bump": "pnpm run build"
