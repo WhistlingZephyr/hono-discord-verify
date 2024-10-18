@@ -6,7 +6,6 @@
   "files": [
     "lib"
   ],
-  "main": "./lib/index.umd.cjs",
   "module": "./lib/index.js",
   "exports": {
     ".": {
