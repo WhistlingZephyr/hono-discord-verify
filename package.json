@@ -1,6 +1,6 @@
 {
   "name": "hono-discord-verify",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "A Hono middleware for verifying Discord interactions payload signature.",
   "type": "module",
   "files": [

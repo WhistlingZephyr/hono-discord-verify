@@ -1,3 +1,5 @@
+## [0.4.1](https://github.com/WhistlingZephyr/hono-discord-verify/compare/v0.4.0...v0.4.1) (2024-10-18)
+
 ## [0.4.0](https://github.com/WhistlingZephyr/hono-discord-verify/compare/v0.3.0...v0.4.0) (2024-10-18)
 
 ### Features
