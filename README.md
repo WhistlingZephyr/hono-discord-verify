@@ -17,6 +17,10 @@ npm i hono-discord-verify
 ## Usage
 
 ```ts
+import keyValidator from "hono-discord-verify";
+
+// ...
+
 app.post("/interactions", keyValidator(publicKey, true), (c) => {
     const body = c.req.valid("header").body;
     if (body.type === InteractionType.Ping) {
@@ -41,3 +45,5 @@ app.post("/interactions", keyValidator(publicKey, true), (c) => {
     } satisfies APIInteractionResponse);
 });
 ```
+
+See [discord-api-types](https://www.npmjs.com/package/discord-api-types) for types and [discord-interactions](https://www.npmjs.com/package/discord-interactions) for more info.
