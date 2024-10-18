@@ -6,11 +6,10 @@ import {
     type APIInteraction,
     type APIInteractionResponse,
 } from "discord-api-types/v10";
-import camelize, { type Camelize } from "camelize-ts";
 
 const discordVerify = (publicKey: string) =>
     createMiddleware<{
-        Variables: { interaction: Camelize<APIInteraction> };
+        Variables: { interaction: APIInteraction };
     }>(async (c, next) => {
         const signature = c.req.header("X-Signature-Ed25519");
         const timestamp = c.req.header("X-Signature-Timestamp");
@@ -36,7 +35,7 @@ const discordVerify = (publicKey: string) =>
             });
         }
 
-        c.set("interaction", camelize(body));
+        c.set("interaction", body);
         await next();
     });
 
